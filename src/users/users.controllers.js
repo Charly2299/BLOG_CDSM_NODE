@@ -14,6 +14,20 @@ const userDB = [{
   "country": "mexico",
   "is_active": true,
   "verified": false
+},
+{
+  "id": "174319f8-23ab-4741-a987-64948203a8aa",
+  "first_name": "Son",
+   "last_name": "Goku",
+  "email": "son.goku@academlo.com",
+  "password": "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+  "phone": "1234567890",
+  "birthday_date": "22/12/1999",
+  "rol": "normal",
+  "profile_image": "",
+  "country": "mexico",
+  "is_active": true,
+  "verified": false
 }];
 
 // "first_name": "Daniel",

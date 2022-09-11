@@ -174,6 +174,10 @@ const getMyUser = (req, res) => {
   res.status(200).json(data)
 }
 
+
+
+
+
 const removeMyUser = (req, res) => {
   const id = req.user.id;
   const data = userControllers.deleteUser(id)

@@ -33,15 +33,38 @@ const createPost =(data,user_id)=>{
     return newPost
 }
 
-// VER UN POST POR ID
-
+// VER UN POST POR ID DEL POST
 const getPostById=(id)=>{
-    const data=postDB.filter((item)=>item.id===id)
+    const data=postDB.filter((post)=>post.id===id)
     return data.length?data[0]:null
 }
+
+
+
+
+// const getPostByIdUser=(id)=>{
+//     const data=postDB.filter((post)=>post.user_id===id)
+//     return data.length?data[0]:null
+// }
+
+// const getPostMyById=(user_id,id)=>{
+//     const data2=getPostByIdUser(user_id)
+//     const data=postDB.filter((post)=>post.id===id)
+//     return data.length?data[0]:null
+// }
+
+//VER  LOS POST DEL USUARIO LOGEADO
+const  getPostsByUser=(user_id)=>{
+    const data =  postDB.filter((post)=>post.user_id===user_id)
+    return data.length?data:null
+}
+
 
 module.exports={
     getAllPosts,
     createPost,
-    getPostById
+    getPostById,
+    getPostsByUser
+    // getPostByIdUser,
+    // getPostMyById
 }

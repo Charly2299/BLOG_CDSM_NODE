@@ -37,3 +37,9 @@
 - - /api/v1/posts
     -POST(PROTEGIDA) //CREAR POST
     -GET (*)   //VER TODOS LOS POST DE LOS USUARIOS
+
+
+- - /api/v1/posts/:id
+    -GET(*) //VER UN POST POR ID(DADO POR PARAMETRO EN LA URL)
+
+    

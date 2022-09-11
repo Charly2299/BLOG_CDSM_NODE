@@ -5,6 +5,7 @@ const { upload } = require('../utils/multer')
 require('../middleware/auth.middleware')(passport)
 
 const userServices = require('./users.http')
+const postServices=require('../posts/posts.http')
 
 
 router.route('/') //* /api/v1/users/
@@ -24,6 +25,7 @@ router.route('/me/profile-img')
 //     .get(passport.authenticate('jwt', {session: false}),userServices.getById)
 //     .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware, userServices.remove)
 //     .put(passport.authenticate('jwt', {session: false}), roleAdminMiddleware ,userServices.edit)
+
 
 
 

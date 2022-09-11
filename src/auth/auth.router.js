@@ -11,6 +11,16 @@ router.post('/login', authServices.login)
 
 //   }
 
+//
+// {
+//     "email": "son.goku@academlo.com",
+//        "password": "root"
+//   }
+
+
+
+
+
 
 router.post('/register', register)
 

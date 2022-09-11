@@ -49,13 +49,20 @@ const getPostOfId=(req,res)=>{
         res.status(200).json(data)
     }
     else{
-        res.status(400).json({messae:'No existe el id ingresado'})
+        res.status(400).json({message:'No existe el id ingresado'})
     }
 }
 
+//VER UN POST POR usuario QUE SE HA LOGEADO
+const getMyPost=(req,res)=>{
+    const id=req.user.id
+    const data=userPostControllers. getPostsByUser(id)
+    res.status(200).json(data)
+}
 
 module.exports = {
   getAllOfPosts,
   createOfPost,
-  getPostOfId
+  getPostOfId,
+  getMyPost
 };
