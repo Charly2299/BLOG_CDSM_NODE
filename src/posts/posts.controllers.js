@@ -12,22 +12,36 @@ const postDB=[
     }
 ]
 
-//ver todos los post
+//VER TODOS LOS POST
 const getAllPosts =()=>{
     return postDB
 
 }
 
 
-//crear un post  
-const createPost =(data)=>{
+//CREAR UN POST
+const createPost =(data,user_id)=>{
     const newPost ={
-
+        id: uuid.v4(),
+        title: data.title,
+        content:data.content,
+        header_image: data.header_image?data.header_image:'',
+        user_id: user_id,//Aqui hara referencia al usuario de tu userDB
+        published: true
     }
+    postDB.push(newPost)
+    return newPost
 }
 
+// VER UN POST POR ID
 
+const getPostById=(id)=>{
+    const data=postDB.filter((item)=>item.id===id)
+    return data.length?data[0]:null
+}
 
 module.exports={
-    getAllPosts
+    getAllPosts,
+    createPost,
+    getPostById
 }
