@@ -32,3 +32,8 @@
 - /api/v1/auth/password-recovery
 - - POST 
 - - PATCH
+
+
+- - /api/v1/posts
+    -POST(PROTEGIDA) //CREAR POST
+    -GET (*)   //VER TODOS LOS POST DE LOS USUARIOS
