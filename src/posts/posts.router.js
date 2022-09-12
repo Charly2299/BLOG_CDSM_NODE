@@ -16,4 +16,17 @@ router.route('/me/posts')
 .get(passport.authenticate('jwt', {session: false}),postServices.getMyPost)
 
 
+//D VER UN POST EN ESPECIFICO PERO SOLO DEL USUARIO LOGEADO
+router.route('/me/posts/:id')
+.get(passport.authenticate('jwt', {session: false}),postServices.getMyPostById)
+.put(passport.authenticate('jwt', {session: false}),postServices.editPostById)
+.delete(passport.authenticate('jwt', {session: false}),postServices.removeMyPost)
+
+
+//prueba
+router.route('/prueba')
+.get(passport.authenticate('jwt', {session: false}),postServices.pruebadata)
+
+
+
 exports.router=router

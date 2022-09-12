@@ -12,14 +12,14 @@ const postDB=[
     }
 ]
 
-//VER TODOS LOS POST
+//A.VER TODOS LOS POST
 const getAllPosts =()=>{
     return postDB
 
 }
 
 
-//CREAR UN POST
+//A.CREAR UN POST
 const createPost =(data,user_id)=>{
     const newPost ={
         id: uuid.v4(),
@@ -33,7 +33,7 @@ const createPost =(data,user_id)=>{
     return newPost
 }
 
-// VER UN POST POR ID DEL POST
+//B. VER UN POST POR ID DEL POST
 const getPostById=(id)=>{
     const data=postDB.filter((post)=>post.id===id)
     return data.length?data[0]:null
@@ -53,10 +53,74 @@ const getPostById=(id)=>{
 //     return data.length?data[0]:null
 // }
 
-//VER  LOS POST DEL USUARIO LOGEADO
-const  getPostsByUser=(user_id)=>{
+//C.VER  LOS POST DEL USUARIO LOGEADO
+const getPostsByUser=(user_id)=>{
     const data =  postDB.filter((post)=>post.user_id===user_id)
     return data.length?data:null
+}
+
+
+//D.VER  UN  POST  EN ESPECIFICO PERO SOLO LOS DEL USUARIO LOGEADO
+const getMyPostByIdUser=(user_id,id)=>{
+ const data1=getPostsByUser(user_id)
+ const data2=data1?data1.filter((post)=>post.id===id):undefined
+ return data2?data2[0]:data2
+
+}
+
+//D.EDITAR UN POST DE UN USUARIO LOEADO  //falta arrerarlo!!!
+const editMyPost=(user_id,id,data)=>{
+    let data1=getPostsByUser(user_id)
+
+    const post=data1.filter((post)=>post.id===data.id)
+
+        const index=data1.findIndex((post)=>post.id==id)
+
+        if(index!==-1){
+            data1[index]={
+                id:id,
+                title:data.title,
+                content:data.content,
+                header_image:data.header_image,
+                user_id:user_id,
+                published:true
+
+            }
+            return postDB[index]
+        }
+        else{
+            return createPost(data,user_id)
+        }
+}
+
+
+//D.ELIIMINAR UN POST  //falta arreglar
+
+const deleteMyPost=(user_id,id)=>{
+    let dataUser=getPostsByUser(user_id)
+
+const index=dataUser.findIndex(post=>post.id===id)
+if(index!==-1){
+    dataUser.splice(index,1)
+    return true
+}
+else{
+    return false
+}
+}
+
+
+// //C.VER  LOS POST DEL USUARIO LOGEADO
+// const getPostsByUser=(user_id)=>{
+//     const data =  postDB.filter((post)=>post.user_id===user_id)
+//     return data.length?data:null
+// }
+
+
+//PRUEBA DEQUE ME TRAE
+const prueba=(user_id)=>{
+  let dataUser=getPostsByUser(user_id)
+  return dataUser
 }
 
 
@@ -64,7 +128,11 @@ module.exports={
     getAllPosts,
     createPost,
     getPostById,
-    getPostsByUser
+    getPostsByUser,
+    getMyPostByIdUser,
+    editMyPost,
+    deleteMyPost,
+    prueba
     // getPostByIdUser,
     // getPostMyById
 }
