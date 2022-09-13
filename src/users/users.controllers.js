@@ -41,7 +41,6 @@ const getAllUsers = () => {
 
 const getUserById = (id) => {
   const data = userDB.filter((item) => item.id === id);
-
   return data.length ? data[0] : null
   //? select * from users where id = ${id};
 };

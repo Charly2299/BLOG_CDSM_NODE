@@ -34,12 +34,21 @@
 - - PATCH
 
 
-- - /api/v1/posts
-    -POST(PROTEGIDA) //CREAR POST
-    -GET (*)   //VER TODOS LOS POST DE LOS USUARIOS
+
+-  /api/v1/posts
+- - POST(PROTEGIDA) (Crear posts) X
+- - GET (*)   (Ver los posts de todos los usuarios) X
 
 
-- - /api/v1/posts/:id
-    -GET(*) //VER UN POST POR ID(DADO POR PARAMETRO EN LA URL)
+- /api/v1/posts/:id
+ - - GET(*) (Ver un post en especifico) X
+ 
+ - /api/v1/users/me/posts 
+- - GET(PROTEGIDA) (Ver unicamente los posts del usuario loggeado) X
+
+- /api/v1/users/me/posts/:id 
+- - GET(PROTEGIDA) (Ver un post en especifico pero solo los del usuario loggeado) X
+- - PUT(PROTEGIDA) (Editar un post) X
+- - DELETE(PROTEGIDA) (Eliminar un post) x
 
     

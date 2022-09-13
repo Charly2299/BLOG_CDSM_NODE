@@ -21,6 +21,25 @@ router.route('/me/profile-img')
     .post(passport.authenticate('jwt', {session: false}), upload.single('profile_img'), userServices.postProfileImg)
     //.get()
 
+
+
+    //////////////EJERCICIO BLOG///////////////
+
+// //C VER UNICAMENTE LOS POSTS DEL USUARIO LOGEADO
+ router.route('/me/posts')
+ .get(passport.authenticate('jwt', {session: false}),postServices.getMyPost)
+
+// //D VER UN POST EN ESPECIFICO PERO SOLO DEL USUARIO LOGEADO
+ router.route('/me/posts/:id')
+ .get(passport.authenticate('jwt', {session: false}),postServices.getMyPostById)
+ .put(passport.authenticate('jwt', {session: false}),postServices.editPostById)
+ .delete(passport.authenticate('jwt', {session: false}),postServices.removeMyPost)
+
+
+/////////////////////////////////////////////////////////
+
+
+
 // router.route('/:id')
 //     .get(passport.authenticate('jwt', {session: false}),userServices.getById)
 //     .delete(passport.authenticate('jwt', {session: false}), roleAdminMiddleware, userServices.remove)
@@ -32,6 +51,8 @@ router.route('/me/profile-img')
 
     router.route('/:id')
     .get(passport.authenticate('jwt', {session: false}),userServices.getById)
+
+    
 
     .post(passport.authenticate('jwt', {session: false}), upload.single('image'), userServices.postProfileImg)
     //.get()
